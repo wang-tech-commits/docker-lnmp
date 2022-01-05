@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd bin;
+docker-compose up -d
