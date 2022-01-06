@@ -8,7 +8,6 @@ services:
       - "80:80"
       - "433:433"
     restart: always
-    tty: true
     container_name: nginx
     volumes:
       - ../www:/var/www/html:rw
@@ -17,10 +16,26 @@ services:
       - ../config/nginx/ssl:/etc/nginx/ssl:ro
       - ../config/nginx/rewrite:/etc/nginx/rewrite:ro
       - ../config/nginx/fastcgi.conf:/etc/nginx/fastcgi.conf:ro
-      #- ../config/nginx/enable-php.conf:/etc/nginx/enable-php.conf:ro
-      #- ../config/nginx/enable-php-pathinfo.conf:/etc/nginx/enable-php-pathinfo.conf:ro
+      - ../config/nginx/enable-php.conf:/etc/nginx/enable-php.conf:ro
+      - ../config/nginx/enable-php-pathinfo.conf:/etc/nginx/enable-php-pathinfo.conf:ro
       - ../logs/nginx:/var/logs/nginx:rw
+
+  php:
+    build:
+      context: ../dockerfiles
+      dockerfile: PHP
+    restart: always
+    container_name: php
+    volumes:
+      - ../www:/var/www/html:rw
+      - ../logs/php:/var/logs/php:rw
+      - ../config/crontab:/etc/cron.d/cron:ro
+      - ../config/php/php.ini:/usr/local/etc/php/php.ini:ro
+      - ../config/php/php-fpm.conf:/usr/local/etc/php-fpm.d/www.conf:ro
+      - ../config/supervisor:/etc/supervisor/conf.d:ro
+      - ../logs/supervisor:/etc/supervisor/logs:rw
     networks:
      - lnmp-network
+
 networks:
  lnmp-network:

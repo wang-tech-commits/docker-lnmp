@@ -82,5 +82,5 @@ git clone https://github.com/wang-tech-commits/docker-lnmp.git
 
 ## 7.安装lnmp环境
 ```shell
-bash start.sh
+bash install.sh
 ```
