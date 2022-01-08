@@ -1,0 +1,6 @@
+FROM redis
+
+EXPOSE 6379
+
+#维护者信息
+MAINTAINER Mr.wang
