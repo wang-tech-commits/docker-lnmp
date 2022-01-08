@@ -44,3 +44,23 @@ services:
       - ../config/php/php-fpm.conf:/usr/local/etc/php-fpm.d/www.conf:ro
       - ../config/supervisor:/etc/supervisor/conf.d:ro
       - ../logs/supervisor:/etc/supervisor/logs:rw
+
+  mysql:
+    build:
+      context: ../dockerfiles
+      dockerfile: Mysql
+    ports:
+      - "3306:3306"
+    restart: always
+    logging:
+      driver: json-file
+      options:
+        max-size: "1m" # 单个文件
+        max-file: "10" # 最多几个文件
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "123456"
+      MYSQL_USER: "ROOT"
+    volumes:
+      - ../volumes/mysql:/var/lib/mysql:rw
+

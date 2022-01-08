@@ -1,0 +1,22 @@
+FROM mysql
+
+# 替换阿里云源
+RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list \
+    && sed -i 's/security.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list
+
+RUN apt-get update && \
+    apt-get install --no-install-recommends -y tzdata && \
+    apt-get clean && \
+    rm -r /var/lib/apt/lists/*
+
+EXPOSE 3306
+
+#维护者信息
+MAINTAINER Mr.wang
+
+#时区
+ENV TZ Asia/Shanghai
+RUN date -R
+
+#容器启动时执行指令
+CMD ["mysqld"]

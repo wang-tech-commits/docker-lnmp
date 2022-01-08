@@ -84,3 +84,8 @@ git clone https://github.com/wang-tech-commits/docker-lnmp.git
 ```shell
 bash install.sh
 ```
+
+## 8.重启服务
+```shell
+bash restart.sh
+```
