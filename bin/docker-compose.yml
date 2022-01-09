@@ -23,6 +23,7 @@ services:
       - ../config/nginx/fastcgi.conf:/etc/nginx/fastcgi.conf:ro
       - ../config/nginx/enable-php.conf:/etc/nginx/enable-php.conf:ro
       - ../config/nginx/enable-php-pathinfo.conf:/etc/nginx/enable-php-pathinfo.conf:ro
+      - ../config/nginx/pathinfo.conf:/etc/nginx/pathinfo.conf:ro
       - ../logs/nginx:/var/logs/nginx:rw
 
   php:
