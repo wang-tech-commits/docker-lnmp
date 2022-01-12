@@ -1,8 +1,9 @@
-# Docker Serv
+# Docker-lnmp Service
 
 ## 1.介绍
 ```
 docker-lnmp环境部署，在Linux服务器安装docker环境后执行。
+php8.1在部分项目中存在bug，暂定8.0,
 ```
 
 ## 2.目录结构
@@ -12,7 +13,8 @@ config - docker容器的应用所需配置文件
 dockerfiles - docker容器的构建配置dockerfile文件
 logs - docker容器的构建配置日志文件
 www - 网站初始访问目录
-start.sh - 可直接执行安装
+install.sh - 可直接执行安装
+restart.sh - 容器重启操作
 ```
 
 ## 3.安装docker（手动安装）
@@ -75,7 +77,7 @@ apt update && apt install docker-compose
 ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 ```
 
-## 6安装docker-lnmp
+## 6.安装docker-lnmp
 ```shell
 git clone https://github.com/wang-tech-commits/docker-lnmp.git
 ```
