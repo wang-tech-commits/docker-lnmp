@@ -34,6 +34,7 @@ RUN apt-get update -y && \
 
 # 安装php环境包
 RUN docker-php-ext-install -j$(nproc) bcmath \
+    amqp \
     bz2 \
     exif \
     gettext \
