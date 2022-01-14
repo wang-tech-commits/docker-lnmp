@@ -10,9 +10,10 @@ Display_Restart_Menu()
     echo "2: Restart MySQL"
     echo "3: Restart PHP"
     echo "4: Restart Redis"
+    echo "5: Restart RabbitMQ"
     echo "exit: Exit current script"
     echo "###################################################"
-    read -p "Enter your choice (1, 2, 3 or exit): " action
+    read -p "Enter your choice (1, 2, 3, 4, 5 or exit): " action
 }
 
 Display_Restart_Menu
@@ -29,5 +30,8 @@ case "${action}" in
 ;;
     4)
     docker-compose restart redis
+;;
+    5)
+    docker-compose restart rabbitmq
 ;;
 esac

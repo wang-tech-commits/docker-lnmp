@@ -78,3 +78,20 @@ services:
     container_name: redis
     volumes:
       - ../volumes/redis:/data:rw
+
+  rabbitmq:
+    image: rabbitmq
+    restart: always
+    logging:
+      driver: json-file
+      options:
+        max-size: "1m" # 单个文件
+        max-file: "10" # 最多几个文件
+    container_name: rabbitmq
+    ports:
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: "root"
+      RABBITMQ_DEFAULT_PASS: "123456"
+    volumes:
+      - ../volumes/rabbitmq:/var/lib/rabbitmq:rw
