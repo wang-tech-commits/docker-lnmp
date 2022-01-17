@@ -34,7 +34,6 @@ RUN apt-get update -y && \
 
 # 安装php环境包
 RUN docker-php-ext-install -j$(nproc) bcmath \
-    amqp \
     bz2 \
     exif \
     gettext \
@@ -71,6 +70,12 @@ RUN pecl install igbinary && docker-php-ext-enable igbinary && \
     rm -rf "$(pecl config-get temp_dir)/swoole" && docker-php-ext-enable swoole && \
     pecl install mongodb && docker-php-ext-enable mongodb && \
     pecl install imagick && docker-php-ext-enable imagick && \
+    wget https://github.com/alanxz/rabbitmq-c/releases/download/v0.11.0/rabbitmq-c-0.11.0.tar.gz && \
+    tar zxf rabbitmq-c-0.11.0.tar.gz && \
+    cd rabbitmq-c-0.11.0 && ./configure --prefix=/usr/local/rabbitmq-c-0.7.1 && \
+    make && make install && \
+    pecl install amqp && docker-php-ext-enable amqp && \
+    rm -rf rabbitmq-c-0.11.0.tar.gz && \
     rm -r /tmp/pear/download/* && cd && \
     mkdir -p /etc/cron.d && \
     touch /etc/cron.d/cron && \
