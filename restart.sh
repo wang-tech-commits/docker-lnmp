@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd bin;
+cd bin || exit;
 
 action=$1
 
