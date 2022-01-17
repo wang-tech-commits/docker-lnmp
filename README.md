@@ -35,7 +35,7 @@ $ sudo apt-get install \
 ```
 #### 3.添加 Docker 的官方 GPG 密钥
 ```shell
-$  curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+$  curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -
 
 ```
 #### 4.设置稳定版仓库（这里用的是阿里云仓库）
