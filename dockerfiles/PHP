@@ -71,8 +71,8 @@ RUN pecl install igbinary && docker-php-ext-enable igbinary && \
     rm -rf "$(pecl config-get temp_dir)/swoole" && docker-php-ext-enable swoole && \
     pecl install mongodb && docker-php-ext-enable mongodb && \
     pecl install imagick && docker-php-ext-enable imagick && \
-    rm -r /tmp/pear/download/* && cd && \
     pecl install amqp && docker-php-ext-enable amqp && \
+    rm -r /tmp/pear/download/* && cd && \
     mkdir -p /etc/cron.d && \
     touch /etc/cron.d/cron && \
     chmod 0644 /etc/cron.d/cron && \
