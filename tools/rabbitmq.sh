@@ -1,5 +1,9 @@
 #!/bin/bash
 
-cd ../bin || exit;
+Install_RabbitMQ(){
+  cd ../bin || exit;
 
-docker-compose -f rabbitmq.yml up -d
+  docker-compose -f rabbitmq.yml up -d
+}
+
+
