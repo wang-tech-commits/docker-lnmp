@@ -1,7 +1,7 @@
 #!/bin/bash
 
 Install_MongoDB(){
-  cd ../bin || exit;
+  cd bin || exit;
 
   docker-compose -f mongodb.yml up -d
 }
