@@ -27,6 +27,7 @@ RUN apt-get update -y && \
     libxslt1-dev \
     libzip-dev \
     libzstd-dev \
+    librabbitmq-dev \
     supervisor \
     cron && \
     apt-get clean && \
@@ -71,6 +72,7 @@ RUN pecl install igbinary && docker-php-ext-enable igbinary && \
     pecl install mongodb && docker-php-ext-enable mongodb && \
     pecl install imagick && docker-php-ext-enable imagick && \
     rm -r /tmp/pear/download/* && cd && \
+    pecl install amqp && docker-php-ext-enable amqp && \
     mkdir -p /etc/cron.d && \
     touch /etc/cron.d/cron && \
     chmod 0644 /etc/cron.d/cron && \
