@@ -4,11 +4,6 @@ FROM mysql
 RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list \
     && sed -i 's/security.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list
 
-RUN apt-get update && \
-    apt-get install --no-install-recommends -y tzdata && \
-    apt-get clean && \
-    rm -r /var/lib/apt/lists/*
-
 EXPOSE 3306
 
 #维护者信息
