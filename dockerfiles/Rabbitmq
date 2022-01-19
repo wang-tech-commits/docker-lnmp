@@ -1,6 +1,6 @@
 FROM rabbitmq:management
 
-EXPOSE 15672
+EXPOSE 5672
 
 #时区
 ENV TZ Asia/Shanghai
