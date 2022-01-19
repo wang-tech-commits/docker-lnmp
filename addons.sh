@@ -15,6 +15,8 @@ Display_Addons_Menu()
     read -p "Enter your choice (1, 2 or exit): " action
 }
 
+Display_Addons_Menu
+
 case "${action}" in
     1)
         Install_RabbitMQ
