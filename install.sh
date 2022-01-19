@@ -1,4 +1,5 @@
 #!/bin/bash
 
-cd bin;
+cd bin || exit;
+
 docker-compose up -d

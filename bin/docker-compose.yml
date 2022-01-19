@@ -64,18 +64,3 @@ services:
       TZ: "UTC"
     volumes:
       - ../volumes/mysql:/var/lib/mysql:rw
-
-  redis:
-    build:
-      context: ../dockerfiles
-      dockerfile: Redis
-    restart: always
-    command: redis-server --requirepass 123456
-    logging:
-      driver: json-file
-      options:
-        max-size: "1m"
-        max-file: "10"
-    container_name: redis
-    volumes:
-      - ../volumes/redis:/data:rw
