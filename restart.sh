@@ -11,6 +11,7 @@ Display_Restart_Menu()
     echo "3: Restart PHP"
     echo "4: Restart Redis"
     echo "5: Restart RabbitMQ"
+    echo "6: Restart MongoDB"
     echo "exit: Exit current script"
     echo "###################################################"
     read -p "Enter your choice (1, 2, 3, 4, 5 or exit): " action
@@ -33,5 +34,8 @@ case "${action}" in
 ;;
     5)
     docker-compose restart rabbitmq
+;;
+    6)
+    docker-compose restart mongodb
 ;;
 esac

@@ -7,7 +7,7 @@ action=$1
 
 Display_Addons_Menu()
 {
-    echo "##### RabbitMQ #####"
+    echo "##### Install RabbitMQ\MongoDB #####"
     echo "1: RabbitMQ"
     echo "2: MongoDB"
     echo "exit: Exit current script"
@@ -26,7 +26,7 @@ case "${action}" in
         exit 1
         ;;
     *)
-        echo "Usage: ./addons.sh {install|uninstall} {RabbitMQ}"
+        echo "Usage: ./addons.sh {install} {RabbitMQ|MongoDB}"
         ;;
 esac
 
