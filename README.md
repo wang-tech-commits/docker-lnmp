@@ -91,3 +91,8 @@ bash install.sh
 ```shell
 bash restart.sh
 ```
+
+## 9.安装RabbitMQ\MongoDB服务
+```shell
+bash addons.sh
+```
