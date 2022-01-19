@@ -3,5 +3,5 @@
 Install_MongoDB(){
   cd bin || exit;
 
-  docker-compose -f mongodb.yml up -d
+  docker-compose -f mongo.yml up -d
 }

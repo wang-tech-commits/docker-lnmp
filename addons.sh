@@ -4,7 +4,7 @@ action=$1
 
 . tools/redis.sh
 . tools/rabbitmq.sh
-. tools/mongodb.sh
+. tools/mongo.sh
 
 Display_Addons_Menu()
 {
