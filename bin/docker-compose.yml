@@ -61,6 +61,7 @@ services:
     container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: "123456"
+      TZ: "UTC"
     volumes:
       - ../volumes/mysql:/var/lib/mysql:rw
 

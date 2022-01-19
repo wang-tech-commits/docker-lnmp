@@ -1,7 +1,9 @@
 version: '3.1'
 services:
   rabbitmq:
-    image: rabbitmq
+    build:
+      context: ../dockerfiles
+      dockerfile: Rabbitmq
     restart: always
     logging:
       driver: json-file
