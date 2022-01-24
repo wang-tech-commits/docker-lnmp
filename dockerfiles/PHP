@@ -1,5 +1,8 @@
 FROM php:8.0-fpm
 
+ARG TZ
+ARG MAINTAINER
+
 # 安装 composer
 #COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN curl -sS https://getcomposer.org/installer | php && \
@@ -83,8 +86,8 @@ EXPOSE 9000
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
 #维护者信息
-MAINTAINER Mr.wang
+MAINTAINER ${MAINTAINER}
 
 #时区
-ENV TZ Asia/Shanghai
+ENV TZ ${TZ}
 RUN date -R

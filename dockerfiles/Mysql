@@ -1,17 +1,20 @@
 FROM mysql
 
+ARG TZ
+ARG MAINTAINER
+
 # 替换阿里云源
 RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list \
     && sed -i 's/security.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list
 
 EXPOSE 3306
 
-#维护者信息
-MAINTAINER Mr.wang
-
 #时区
-ENV TZ Asia/Shanghai
+ENV TZ ${TZ}
 RUN date -R
+
+#维护者信息
+MAINTAINER ${MAINTAINER}
 
 #容器启动时执行指令
 CMD ["mysqld"]
