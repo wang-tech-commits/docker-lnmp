@@ -12,9 +12,10 @@ Display_Restart_Menu()
     echo "4: Restart Redis"
     echo "5: Restart RabbitMQ"
     echo "6: Restart MongoDB"
+    echo "7: Restart Memcached"
     echo "exit: Exit current script"
     echo "###################################################"
-    read -p "Enter your choice (1, 2, 3, 4, 5 or exit): " action
+    read -p "Enter your choice (1, 2, 3, 4, 5, 6, 7 or exit): " action
 }
 
 Display_Restart_Menu
@@ -37,5 +38,8 @@ case "${action}" in
 ;;
     6)
     docker-compose restart mongodb
+;;
+    7)
+    docker-compose restart memcached
 ;;
 esac
