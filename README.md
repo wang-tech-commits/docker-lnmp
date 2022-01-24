@@ -93,7 +93,7 @@ bash install.sh
 bash restart.sh
 ```
 
-## 9.安装Redis\RabbitMQ\MongoDB服务
+## 9.安装Redis\RabbitMQ\MongoDB\Memcached服务
 ```shell
 bash addons.sh
 ```
