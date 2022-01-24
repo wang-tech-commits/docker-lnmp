@@ -1,7 +1,10 @@
-FROM nginx
+ARG NGINX_VERSION
+FROM nginx:${NGINX_VERSION}
 
 ARG TZ
 ARG MAINTAINER
+ARG NGINX_HTTP_HOST_PORT
+ARG NGINX_HTTPS_HOST_PORT
 
 # 替换阿里云源
 RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list \
@@ -13,7 +16,7 @@ RUN apt-get update && \
     rm -r /var/lib/apt/lists/* && \
     echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen && locale-gen
 
-EXPOSE 80 443
+EXPOSE ${NGINX_HTTP_HOST_PORT} ${NGINX_HTTPS_HOST_PORT}
 
 #时区
 ENV TZ ${TZ}
