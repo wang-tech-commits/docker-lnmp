@@ -7,10 +7,10 @@ services:
       args:
         NGINX_VERSION: ${NGINX_VERSION}
         NGINX_HTTP_HOST_PORT: ${NGINX_HTTP_HOST_PORT}
-        NGINX_HTTPS_HOST_PORT: ${NGINX_HTTP_HOST_PORT}
+        NGINX_HTTPS_HOST_PORT: ${NGINX_HTTPS_HOST_PORT}
     ports:
       - "${NGINX_HTTP_HOST_PORT}:80"
-      - "${NGINX_HTTP_HOST_PORT}:433"
+      - "${NGINX_HTTPS_HOST_PORT}:433"
     restart: always
     environment:
       TZ: "$TZ"
