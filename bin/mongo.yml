@@ -4,7 +4,14 @@ services:
     build:
       context: ../dockerfiles
       dockerfile: Mongo
+      args:
+        MONGODB_VERSION: ${MONGODB_VERSION}
+        MONGODB_EXPOSE: ${MONGODB_EXPOSE}
     restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGODB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_ROOT_PASSWORD}
+      MAINTAINER: "$MAINTAINER"
     logging:
       driver: json-file
       options:

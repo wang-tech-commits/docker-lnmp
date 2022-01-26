@@ -19,5 +19,6 @@ services:
     environment:
       RABBITMQ_DEFAULT_USER: "$RABBITMQ_DEFAULT_USER"
       RABBITMQ_DEFAULT_PASS: "$RABBITMQ_DEFAULT_PASS"
+      MAINTAINER: "$MAINTAINER"
     volumes:
       - ../volumes/rabbitmq:/var/lib/rabbitmq:rw
