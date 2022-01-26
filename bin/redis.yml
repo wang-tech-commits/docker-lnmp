@@ -4,9 +4,9 @@ services:
     build:
       context: ../dockerfiles
       dockerfile: Redis
-    arg:
-      REDIS_VERSION: ${REDIS_VERSION}
-      REDIS_EXPOSE: ${REDIS_EXPOSE}
+      args:
+        REDIS_VERSION: ${REDIS_VERSION}
+        REDIS_EXPOSE: ${REDIS_EXPOSE}
     restart: always
     command: redis-server --requirepass ${MYSQL_ROOT_PASSWORD}
     logging:
