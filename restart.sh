@@ -23,23 +23,29 @@ Display_Restart_Menu
 case "${action}" in
     1)
     docker-compose restart nginx
-;;
+    ;;
     2)
     docker-compose restart mysql
-;;
+    ;;
     3)
     docker-compose restart php
-;;
+    ;;
     4)
     docker-compose restart redis
-;;
+    ;;
     5)
     docker-compose restart rabbitmq
-;;
+    ;;
     6)
     docker-compose restart mongodb
-;;
+    ;;
     7)
     docker-compose restart memcached
-;;
+    ;;
+    [eE][xX][iI][tT])
+        exit 1
+        ;;
+    *)
+        echo "undefined"
+        ;;
 esac
