@@ -4,7 +4,12 @@ services:
     build:
       context: ../dockerfiles
       dockerfile: Memcached
+      args:
+        MEMCACHED_VERSION: ${MEMCACHED_VERSION}
+        MEMCACHED_EXPOSE: ${MEMCACHED_EXPOSE}
     restart: always
+    environment:
+      MAINTAINER: "$MAINTAINER"
     logging:
       driver: json-file
       options:
