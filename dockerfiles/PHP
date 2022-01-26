@@ -1,7 +1,9 @@
-FROM php:8.0-fpm
+ARG PHP_VERSION
+FROM php:${PHP_VERSION}
 
 ARG TZ
 ARG MAINTAINER
+ARG PHP_EXPOSE
 
 # 安装 composer
 #COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -81,7 +83,7 @@ RUN pecl install igbinary && docker-php-ext-enable igbinary && \
     chmod 0644 /etc/cron.d/cron && \
     chmod 777 /usr/local/bin/entrypoint.sh
 
-EXPOSE 9000
+EXPOSE ${PHP_EXPOSE}
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 

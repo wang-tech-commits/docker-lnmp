@@ -37,7 +37,13 @@ services:
     build:
       context: ../dockerfiles
       dockerfile: PHP
+      args:
+        PHP_VERSION: ${PHP_VERSION}
+        PHP_EXPOSE: ${PHP_EXPOSE}
     restart: always
+    environment:
+      TZ: "$TZ"
+      MAINTAINER: "$MAINTAINER"
     logging:
       driver: json-file
       options:
@@ -57,8 +63,11 @@ services:
     build:
       context: ../dockerfiles
       dockerfile: Mysql
+      args:
+        MYSQL_VERSION: ${MYSQL_VERSION}
+        MYSQL_EXPOSE: ${MYSQL_EXPOSE}
     ports:
-      - "3306:3306"
+      - "${MYSQL_EXPOSE}:3306"
     restart: always
     logging:
       driver: json-file
@@ -67,7 +76,8 @@ services:
         max-file: "10"
     container_name: mysql
     environment:
-      MYSQL_ROOT_PASSWORD: "123456"
-      TZ: "UTC"
+      MYSQL_ROOT_PASSWORD: "$MYSQL_ROOT_PASSWORD"
+      MAINTAINER: "$MAINTAINER"
+      TZ: "$TZ"
     volumes:
       - ../volumes/mysql:/var/lib/mysql:rw

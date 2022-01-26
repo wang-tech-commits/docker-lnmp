@@ -1,13 +1,15 @@
-FROM mysql
+ARG MYSQL_VERSION
+FROM mysql:${MYSQL_VERSION}
 
 ARG TZ
 ARG MAINTAINER
+ARG MYSQL_EXPOSE
 
 # 替换阿里云源
 RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list \
     && sed -i 's/security.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list
 
-EXPOSE 3306
+EXPOSE ${MYSQL_EXPOSE}
 
 #时区
 ENV TZ ${TZ}
