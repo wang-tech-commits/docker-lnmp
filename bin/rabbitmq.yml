@@ -4,6 +4,9 @@ services:
     build:
       context: ../dockerfiles
       dockerfile: Rabbitmq
+      args:
+        RabbitMQ_VERSION: ${RabbitMQ_VERSION}
+        RabbitMQ_EXPOSE: ${RabbitMQ_EXPOSE}
     restart: always
     logging:
       driver: json-file
@@ -12,9 +15,9 @@ services:
         max-file: "10"
     container_name: rabbitmq
     ports:
-      - "15672:15672"
+      - "${RabbitMQ_PORT}:15672"
     environment:
-      RABBITMQ_DEFAULT_USER: "root"
-      RABBITMQ_DEFAULT_PASS: "123456"
+      RABBITMQ_DEFAULT_USER: "$RABBITMQ_DEFAULT_USER"
+      RABBITMQ_DEFAULT_PASS: "$RABBITMQ_DEFAULT_PASS"
     volumes:
       - ../volumes/rabbitmq:/var/lib/rabbitmq:rw

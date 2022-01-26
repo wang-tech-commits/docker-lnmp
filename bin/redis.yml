@@ -1,16 +1,19 @@
 version: '3.1'
 services:
-redis:
-  build:
-    context: ../dockerfiles
-    dockerfile: Redis
-  restart: always
-  command: redis-server --requirepass 123456
-  logging:
-    driver: json-file
-    options:
-      max-size: "1m"
-      max-file: "10"
-  container_name: redis
-  volumes:
-    - ../volumes/redis:/data:rw
+  redis:
+    build:
+      context: ../dockerfiles
+      dockerfile: Redis
+    arg:
+      REDIS_VERSION: ${REDIS_VERSION}
+      REDIS_EXPOSE: ${REDIS_EXPOSE}
+    restart: always
+    command: redis-server --requirepass ${MYSQL_ROOT_PASSWORD}
+    logging:
+      driver: json-file
+      options:
+        max-size: "1m"
+        max-file: "10"
+    container_name: redis
+    volumes:
+      - ../volumes/redis:/data:rw

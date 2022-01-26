@@ -1,9 +1,11 @@
-FROM rabbitmq:management
+ARG RabbitMQ_VERSION
+FROM rabbitmq:${RabbitMQ_VERSION}
 
 ARG TZ
 ARG MAINTAINER
+ARG RabbitMQ_EXPOSE
 
-EXPOSE 5672
+EXPOSE ${RabbitMQ_EXPOSE}
 
 #时区
 ENV TZ ${TZ}
