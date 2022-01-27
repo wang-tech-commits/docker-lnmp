@@ -12,8 +12,9 @@ services:
     restart: always
     environment:
       - node.name=elasticsearch
-      - discovery.type=single-node
+      - "discovery.type=single-node"
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      MAINTAINER: "$MAINTAINER"
     ports:
       - '9200:9200'     #java、集群通信端口
       - '9300:9300'     #http通信端口
