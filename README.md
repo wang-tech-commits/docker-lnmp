@@ -13,6 +13,7 @@ config - docker容器的应用所需配置文件
 dockerfiles - docker容器的构建配置dockerfile文件
 logs - docker容器的构建配置日志文件
 www - 网站初始访问目录
+tools - 扩展服务安装工具
 addons.sh - 扩展工具包安装执行
 install.sh - 基础环境包安装，包括nginx，php，mysql
 restart.sh - 容器重启操作
