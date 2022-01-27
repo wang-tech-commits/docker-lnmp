@@ -11,10 +11,10 @@ services:
     container_name: elasticsearch
     restart: always
     environment:
-      - node.name=elasticsearch
+      - "node.name=elasticsearch"
       - "discovery.type=single-node"
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-      MAINTAINER: "$MAINTAINER"
+      - MAINTAINER=${MAINTAINER}
     ports:
       - '9200:9200'     #java、集群通信端口
       - '9300:9300'     #http通信端口
@@ -22,7 +22,7 @@ services:
       - ../volumes/elasticsearch/data:/usr/share/elasticsearch/data:rw
       - ../volumes/elasticsearch/plugins:/usr/share/elasticsearch/plugins:rw
       - ../config/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
-    privileged: true    #环境变量
+      - ../logs/elasticsearch:/usr/share/elasticsearch/logs:rw
     logging:
       driver: json-file
       options:
