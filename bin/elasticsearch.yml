@@ -2,8 +2,14 @@
 version: '3.1'
 services:
   elasticsearch:
-    image: elasticsearch:${ELASTICSEARCH_VERSION}
+    build:
+      context: ../dockerfiles
+      dockerfile: ElasticSearch
+      args:
+        ELASTICSEARCH_VERSION: ${ELASTICSEARCH_VERSION}
+        ELASTICSEARCH_HTTP_EXPOSE: ${ELASTICSEARCH_HTTP_EXPOSE}
     container_name: elasticsearch
+    restart: always
     environment:
       - node.name=elasticsearch
       - discovery.type=single-node
@@ -16,3 +22,8 @@ services:
       - ../volumes/elasticsearch/plugins:/usr/share/elasticsearch/plugins:rw
       - ../config/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
     privileged: true    #环境变量
+    logging:
+      driver: json-file
+      options:
+        max-size: "1m"
+        max-file: "10"
