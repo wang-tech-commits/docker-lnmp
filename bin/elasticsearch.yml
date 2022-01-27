@@ -1,0 +1,18 @@
+# 暂时以单节点部署服务，可以复制修改配置做多节点部署
+version: '3.1'
+services:
+  elasticsearch:
+    image: elasticsearch:${ELASTICSEARCH_VERSION}
+    container_name: elasticsearch
+    environment:
+      - node.name=elasticsearch
+      - discovery.type=single-node
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+      - '9200:9200'     #java、集群通信端口
+      - '9300:9300'     #http通信端口
+    volumes:
+      - ../volumes/elasticsearch/data:/usr/share/elasticsearch/data:rw
+      - ../volumes/elasticsearch/plugins:/usr/share/elasticsearch/plugins:rw
+      - ../config/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+    privileged: true    #环境变量
