@@ -3,7 +3,7 @@
 ## 1.介绍
 ```
 docker-lnmp环境部署，在Linux服务器安装docker环境后执行。
-php8.1在部分项目中存在bug，暂定8.0,
+php8.1在部分项目中存在bug，暂定8.0.14,
 ```
 
 ## 2.目录结构
@@ -13,9 +13,10 @@ config - docker容器的应用所需配置文件
 dockerfiles - docker容器的构建配置dockerfile文件
 logs - docker容器的构建配置日志文件
 www - 网站初始访问目录
-addons.sh - 扩展工具安装执行，包括redis，rabbitmq，mongodb
-install.sh - 基础包安装执行，包括nginx，php，mysql
+addons.sh - 扩展工具包安装执行
+install.sh - 基础环境包安装，包括nginx，php，mysql
 restart.sh - 容器重启操作
+.env.sample - 基础配置文件，环境安装成功后，此文件失效
 ```
 
 ## 3.安装docker（手动安装）
@@ -93,7 +94,7 @@ bash install.sh
 bash restart.sh
 ```
 
-## 9.安装Redis\RabbitMQ\MongoDB\Memcached服务
+## 9.安装Redis\RabbitMQ\MongoDB\Memcached\ElasticSearch服务
 ```shell
 bash addons.sh
 ```
