@@ -7,20 +7,18 @@ action=$1
 . tools/mongo.sh
 . tools/memcached.sh
 . tools/elasticsearch.sh
-. tools/nodejs.sh
 
 Display_Addons_Menu()
 {
-    echo "##### Install Redis\RabbitMQ\MongoDB\Memcached\ElasticSearch\Nodejs #####"
+    echo "##### Install Redis\RabbitMQ\MongoDB\Memcached\ElasticSearch #####"
     echo "1: Redis"
     echo "2: RabbitMQ"
     echo "3: MongoDB"
     echo "4: Memcached"
     echo "5: ElasticSearch"
-    echo "6: Nodejs"
     echo "exit: Exit current script"
     echo "#####################################################"
-    read -p "Enter your choice (1, 2, 3, 4, 5, 6 or exit): " action
+    read -p "Enter your choice (1, 2, 3, 4, 5 or exit): " action
 }
 
 Display_Addons_Menu
@@ -41,14 +39,11 @@ case "${action}" in
     5)
         Install_ElasticSearch
         ;;
-    6)
-        Install_Nodejs
-        ;;
     [eE][xX][iI][tT])
         exit 1
         ;;
     *)
-        echo "Usage: ./addons.sh {install} {Redis|RabbitMQ|MongoDB|Memcached|ElasticSearch|Nodejs}"
+        echo "Usage: ./addons.sh {install} {Redis|RabbitMQ|MongoDB|Memcached|ElasticSearch}"
         ;;
 esac
 
